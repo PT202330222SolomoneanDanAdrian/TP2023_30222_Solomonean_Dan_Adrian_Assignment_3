@@ -3,11 +3,15 @@ package Connection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+/**
+ * * Created by Dan on 05/21/2023.
+ * This class manages the connection to the database.*/
+
 
 public class ConnectionFactory {
 
     private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class.getName());
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DBURL = "jdbc:mysql://localhost:3306/warehouse";
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
