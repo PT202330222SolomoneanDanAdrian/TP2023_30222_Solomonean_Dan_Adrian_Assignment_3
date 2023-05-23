@@ -110,11 +110,11 @@ public class ClientFrame extends JFrame {
             ClientDAO clientDAO = new ClientDAO();
             List<Client> clients = clientDAO.findAll();
 
-            DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"ID", "Name", "Email", "Address"}, 0);
+            DefaultTableModel tableModel = clientDAO.retriveProperties(clients);
 
-            for (Client client : clients) {
-                tableModel.addRow(new Object[]{client.getId(), client.getName(), client.getEmail(), client.getAddress()});
-            }
+//            for (Client client : clients) {
+//                tableModel.addRow(new Object[]{client.getId(), client.getName(), client.getEmail(), client.getAddress()});
+//            }
 
             clientsTable.setModel(tableModel);
         });

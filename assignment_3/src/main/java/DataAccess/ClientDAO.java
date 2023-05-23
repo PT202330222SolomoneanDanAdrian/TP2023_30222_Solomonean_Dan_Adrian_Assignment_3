@@ -2,6 +2,7 @@ package DataAccess;
 
 import Models.Client;
 
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -36,5 +37,9 @@ public class ClientDAO extends AbstractDAO<Client> {
         boolean deletedClient = super.delete(id);
 
         return deletedClient;
+    }
+
+    public DefaultTableModel retriveProperties(List<Client> clients) {
+        return super.retriveProperties(clients);
     }
 }

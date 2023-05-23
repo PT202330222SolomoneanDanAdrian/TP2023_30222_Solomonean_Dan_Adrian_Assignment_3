@@ -2,6 +2,7 @@ package DataAccess;
 
 import Models.Product;
 
+import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class ProductDAO extends AbstractDAO<Product> {
@@ -34,5 +35,9 @@ public class ProductDAO extends AbstractDAO<Product> {
         boolean deletedProduct = super.delete(id);
 
         return deletedProduct;
+    }
+
+    public DefaultTableModel retriveProperties(List<Product> objects) {
+        return super.retriveProperties(objects);
     }
 }

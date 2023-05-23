@@ -94,11 +94,11 @@ public class ProductFrame extends JFrame {
             ProductDAO productDAO = new ProductDAO();
             List<Product> products = productDAO.findAll();
 
-            DefaultTableModel model = new DefaultTableModel(new Object[]{"Id", "Name", "Quantity", "Price"}, 0);
+            DefaultTableModel model = productDAO.retriveProperties(products); //new DefaultTableModel(new Object[]{"Id", "Name", "Quantity", "Price"}, 0);
 
-            for (Product product : products) {
-                model.addRow(new Object[]{product.getId(), product.getName(), product.getQuantity(), product.getPrice()});
-            }
+//            for (Product product : products) {
+//                model.addRow(new Object[]{product.getId(), product.getName(), product.getQuantity(), product.getPrice()});
+//            }
 
             productsTable.setModel(model);
         });

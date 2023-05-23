@@ -3,6 +3,8 @@ package DataAccess;
 import Connection.ConnectionFactory;
 import Models.Client;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
@@ -128,6 +130,43 @@ public class AbstractDAO<T> {
         }
 
         return updatedEntity;
+    }
+
+    public DefaultTableModel retriveProperties(List<T> objects) {
+
+        DefaultTableModel tableModel = new DefaultTableModel();
+        List<String> columnNames = new ArrayList<>();
+        List<List<Object>> rows = new ArrayList<>();
+
+        for (Field field : type.getDeclaredFields()) {
+            columnNames.add(field.getName());
+        }
+
+        for (T object : objects) {
+            List<Object> row = new ArrayList<>();
+
+            for (Field field : type.getDeclaredFields()) {
+                field.setAccessible(true);
+
+                try {
+                    row.add(field.get(object));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            rows.add(row);
+        }
+
+        for (String columnName : columnNames) {
+            tableModel.addColumn(columnName);
+        }
+
+        for (List<Object> row : rows) {
+            tableModel.addRow(row.toArray());
+        }
+
+        return tableModel;
     }
 
     public boolean delete(int id) {

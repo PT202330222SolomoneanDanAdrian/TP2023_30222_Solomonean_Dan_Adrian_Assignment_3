@@ -14,6 +14,8 @@ public class MainFrame extends JFrame {
         super("Main Frame");
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(200, 200, 500, 500);
+       // this.setSize(500, 500);
 
         clientsOperationsButton.addActionListener(e -> {
             new ClientFrame();
@@ -30,7 +32,7 @@ public class MainFrame extends JFrame {
             this.dispose();
         });
 
-        this.pack();
+       // this.pack();
         this.setVisible(true);
     }
 
